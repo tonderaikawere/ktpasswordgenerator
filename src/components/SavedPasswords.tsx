@@ -6,7 +6,9 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import DownloadIcon from '@mui/icons-material/Download';
 import { SavedPassword } from '../types';
+import { exportToTxt, exportToCsv, exportToJson } from '../utils/exporter';
 
 interface Props {
   saved: SavedPassword[];
@@ -35,6 +37,18 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
         <Typography variant="h5" sx={{ fontFamily: 'Outfit', fontWeight: 700, mb: 3 }}>
           Saved Passwords Drawer
         </Typography>
+
+        <Box sx={{ display: 'flex', gap: 1, mb: 3, flexWrap: 'wrap' }}>
+          <Button startIcon={<DownloadIcon />} variant="outlined" size="small" onClick={() => exportToTxt(saved)} disabled={saved.length === 0}>
+            TXT
+          </Button>
+          <Button startIcon={<DownloadIcon />} variant="outlined" size="small" onClick={() => exportToCsv(saved)} disabled={saved.length === 0}>
+            CSV
+          </Button>
+          <Button startIcon={<DownloadIcon />} variant="outlined" size="small" onClick={() => exportToJson(saved)} disabled={saved.length === 0}>
+            JSON
+          </Button>
+        </Box>
 
         <Grid container spacing={2} sx={{ mb: 3 }} alignItems="center">
           <Grid size={{ xs: 12, sm: 7 }}>

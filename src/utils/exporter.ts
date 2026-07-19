@@ -45,3 +45,13 @@ export function exportToCsv(passwords: SavedPassword[]) {
 
   triggerDownload(csvContent, 'text/csv;charset=utf-8', 'kawerify_passwords.csv');
 }
+
+export function exportToJson(passwords: SavedPassword[]) {
+  const backup = {
+    app: 'Kawerify Tech Passwords',
+    exportedAt: Date.now(),
+    version: '1.0.0',
+    data: passwords
+  };
+  triggerDownload(JSON.stringify(backup, null, 2), 'application/json;charset=utf-8', 'kawerify_passwords.json');
+}
