@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid, FormControlLabel, Switch, Accordion, AccordionSummary, AccordionDetails, TextField } from '@mui/material';
+import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid, FormControlLabel, Switch, Accordion, AccordionSummary, AccordionDetails, TextField, Chip } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { GenOptions } from '../types';
+import { GenOptions, PresetName } from '../types';
 
 interface Props {
   options: GenOptions;
@@ -14,9 +14,10 @@ interface Props {
   onSave: () => void;
   copyToClipboard: (pwd: string) => void;
   strengthInfo: { label: string; color: string; value: number; entropy: number };
+  applyPreset: (preset: PresetName) => void;
 }
 
-export default function PasswordGenerator({ options, setOptions, password, generate, onSave, copyToClipboard, strengthInfo }: Props) {
+export default function PasswordGenerator({ options, setOptions, password, generate, onSave, copyToClipboard, strengthInfo, applyPreset }: Props) {
   const handleLengthChange = (event: Event, newValue: number | number[]) => {
     setOptions(prev => ({ ...prev, length: newValue as number }));
   };
@@ -99,6 +100,18 @@ export default function PasswordGenerator({ options, setOptions, password, gener
               }
             }}
           />
+        </Box>
+
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500, mb: 1 }}>
+            Quick Configuration Presets:
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+            <Chip label="All-Purpose (Standard)" onClick={() => applyPreset('standard')} color="primary" variant="outlined" sx={{ cursor: 'pointer' }} />
+            <Chip label="Secured PIN" onClick={() => applyPreset('pin')} color="secondary" variant="outlined" sx={{ cursor: 'pointer' }} />
+            <Chip label="Easy to Speak (Memorable)" onClick={() => applyPreset('memorable')} color="info" variant="outlined" sx={{ cursor: 'pointer' }} />
+            <Chip label="Maximum Strength" onClick={() => applyPreset('strongest')} color="warning" variant="outlined" sx={{ cursor: 'pointer' }} />
+          </Box>
         </Box>
 
         <Box sx={{ mb: 4 }}>
