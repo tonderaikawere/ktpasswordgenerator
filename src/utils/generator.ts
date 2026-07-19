@@ -92,3 +92,11 @@ export function calculateEntropy(pwdLength: number, poolSize: number): number {
   if (pwdLength <= 0 || poolSize <= 1) return 0;
   return pwdLength * Math.log2(poolSize);
 }
+
+export function getStrengthInfo(entropy: number) {
+  if (entropy === 0) return { label: 'Invalid Option Selection', color: '#f44336', value: 0 };
+  if (entropy < 40) return { label: 'Weak (Vulnerable)', color: '#f44336', value: 25 };
+  if (entropy < 60) return { label: 'Medium (Adequate)', color: '#ff9800', value: 50 };
+  if (entropy < 85) return { label: 'Strong (Highly Secure)', color: '#00e5ff', value: 75 };
+  return { label: 'Very Strong (Unbreakable)', color: '#00e676', value: 100 };
+}
