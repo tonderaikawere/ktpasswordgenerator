@@ -23,7 +23,7 @@ export default function EducationalHub() {
               <Typography variant="body2" color="text.secondary" paragraph>
                 Password entropy is a mathematical measure of how unpredictable a password is. It is measured in <strong>bits</strong>. The formula is:
                 <br />
-                <code style={{ background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4, display: 'inline-block', margin: '6px 0' }}>
+                <code style={{ background: '#f6f9fd', border: '1px solid #d6dce5', color: '#0b4a86', padding: '2px 8px', borderRadius: 4, display: 'inline-block', margin: '6px 0', fontFamily: 'monospace' }}>
                   Entropy = Length × log₂(Pool Size)
                 </code>
               </Typography>

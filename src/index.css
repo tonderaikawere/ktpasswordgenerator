@@ -1,30 +1,30 @@
-/* Custom floating blobs */
+/* Custom floating blobs — light Kawerify blue tones */
 .blob {
   position: fixed;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(130px);
   z-index: -1;
-  opacity: 0.15;
+  opacity: 0.07;
   pointer-events: none;
 }
 .blob-1 {
-  background: radial-gradient(circle, #a855f7, #6366f1);
-  width: 400px;
-  height: 400px;
+  background: radial-gradient(circle, #0b4a86, #00acdb);
+  width: 420px;
+  height: 420px;
   top: -100px;
   left: -100px;
   animation: float1 25s infinite alternate;
 }
 .blob-2 {
-  background: radial-gradient(circle, #06b6d4, #3b82f6);
-  width: 500px;
-  height: 500px;
+  background: radial-gradient(circle, #064780, #3c79b8);
+  width: 520px;
+  height: 520px;
   bottom: -150px;
   right: -150px;
   animation: float2 30s infinite alternate;
 }
 .blob-3 {
-  background: radial-gradient(circle, #ec4899, #f43f5e);
+  background: radial-gradient(circle, #00acdb, #0b4a86);
   width: 300px;
   height: 300px;
   top: 40%;
@@ -43,31 +43,32 @@
   50% { transform: translate(-60px, 80px) scale(0.85); }
 }
 @keyframes float3 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(80px, -50px) scale(1.2); }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-30%, -70%) scale(1.2); }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar — brand blue */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.5);
+  background: #f6f9fd;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.4);
+  background: rgba(11, 74, 134, 0.25);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 85, 247, 0.6);
+  background: rgba(11, 74, 134, 0.45);
 }
 
+/* Card hover effects — brand blue shadow */
 .MuiPaper-root {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease-in-out !important;
 }
 .MuiPaper-root:hover {
-  box-shadow: 0 12px 40px 0 rgba(168, 85, 247, 0.15) !important;
+  box-shadow: 0 12px 40px 0 rgba(11, 74, 134, 0.1) !important;
 }
 .MuiButton-root:active {
   transform: scale(0.97) !important;
@@ -76,6 +77,6 @@
   transition: all 0.2s ease-in-out;
 }
 .MuiChip-root:hover {
-  background-color: rgba(168, 85, 247, 0.15) !important;
+  background-color: rgba(11, 74, 134, 0.08) !important;
   transform: translateY(-1px);
 }

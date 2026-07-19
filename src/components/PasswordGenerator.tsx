@@ -57,7 +57,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
               fontFamily: 'monospace',
               fontSize: { xs: '1rem', sm: '1.25rem' },
               fontWeight: 'bold',
-              bgcolor: 'rgba(0, 0, 0, 0.2)',
+              bgcolor: '#f6f9fd',
               mb: 1.5,
               '& .MuiOutlinedInput-input': {
                 py: 2,
@@ -98,7 +98,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
             sx={{
               height: 6,
               borderRadius: 3,
-              bgcolor: 'rgba(255,255,255,0.05)',
+              bgcolor: 'rgba(11, 74, 134, 0.08)',
               '& .MuiLinearProgress-bar': {
                 bgcolor: strengthInfo.color,
                 borderRadius: 3
@@ -124,7 +124,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
             <Typography variant="body1" sx={{ fontWeight: 500 }}>
               Password Length
             </Typography>
-            <Typography variant="body1" color="primary.light" sx={{ fontWeight: 'bold', fontFamily: 'Outfit' }}>
+            <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold', fontFamily: '"Poppins", sans-serif' }}>
               {options.length} characters
             </Typography>
           </Box>
@@ -143,7 +143,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
                     width: 18,
                     height: 18,
                     '&:hover, &.Mui-focusVisible': {
-                      boxShadow: '0px 0px 0px 8px rgba(168, 85, 247, 0.16)'
+                      boxShadow: '0px 0px 0px 8px rgba(11, 74, 134, 0.14)'
                     }
                   }
                 }}
@@ -184,7 +184,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
           </Grid>
         </Box>
 
-        <Accordion sx={{ bgcolor: 'rgba(255, 255, 255, 0.02)', mb: 3, border: '1px solid rgba(255, 255, 255, 0.05)', boxShadow: 'none' }}>
+        <Accordion sx={{ bgcolor: '#f6f9fd', mb: 3, border: '1px solid #d6dce5', boxShadow: 'none', borderRadius: '8px !important' }}>
           <AccordionSummary expandIcon={<ExpandMoreIcon color="primary" />}>
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
               Advanced Exclusion & Filters Settings

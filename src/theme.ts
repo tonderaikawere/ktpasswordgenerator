@@ -1,42 +1,70 @@
 import { createTheme } from '@mui/material/styles';
 
+const KT_BLUE        = '#0b4a86'; // Kawerify primary blue
+const KT_BLUE_STRONG = '#064780'; // Secondary deep blue
+const KT_BLUE_DEEP   = '#061a3b'; // Very deep navy
+const KT_INK         = '#07162f'; // Body text
+const KT_MUTED       = '#5c6573'; // Secondary text
+const KT_LINE        = '#d6dce5'; // Borders
+const KT_SOFT        = '#f6f9fd'; // Backgrounds
+const KT_CYAN        = '#00acdb'; // Accent cyan (from logo)
+const KT_WHITE       = '#ffffff';
+
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
-      main: '#a855f7',
-      light: '#c084fc',
-      dark: '#7e22ce',
+      main: KT_BLUE,
+      light: '#3c79b8',
+      dark: KT_BLUE_DEEP,
     },
     secondary: {
-      main: '#06b6d4',
-      light: '#22d3ee',
-      dark: '#0891b2',
+      main: KT_CYAN,
+      light: '#35c4e8',
+      dark: '#0089b2',
     },
     background: {
-      default: '#070a13',
-      paper: 'rgba(15, 23, 42, 0.75)',
+      default: KT_SOFT,
+      paper: KT_WHITE,
     },
+    divider: KT_LINE,
     text: {
-      primary: '#f8fafc',
-      secondary: '#94a3b8',
+      primary: KT_INK,
+      secondary: KT_MUTED,
+    },
+    success: {
+      main: '#2e7d32',
+    },
+    warning: {
+      main: '#e65100',
+    },
+    error: {
+      main: '#c62828',
     },
   },
   typography: {
-    fontFamily: '"Outfit", "Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Poppins", "Inter", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontWeight: 800,
-      letterSpacing: '-0.025em',
-    },
-    h2: {
-      fontWeight: 700,
+      fontFamily: '"Aclonica", "Poppins", sans-serif',
+      fontWeight: 900,
       letterSpacing: '-0.02em',
     },
+    h2: {
+      fontFamily: '"Aclonica", "Poppins", sans-serif',
+      fontWeight: 800,
+      letterSpacing: '-0.015em',
+    },
     h5: {
-      fontWeight: 600,
+      fontFamily: '"Aclonica", "Poppins", sans-serif',
+      fontWeight: 700,
       letterSpacing: '-0.01em',
     },
+    h6: {
+      fontFamily: '"Aclonica", "Poppins", sans-serif',
+      fontWeight: 600,
+    },
     button: {
+      fontFamily: '"Poppins", sans-serif',
       fontWeight: 600,
       textTransform: 'none',
     },
@@ -45,8 +73,8 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: '#070a13',
-          backgroundImage: 'radial-gradient(ellipse at top, #1e1b4b 0%, #070a13 100%)',
+          backgroundColor: KT_SOFT,
+          backgroundImage: `linear-gradient(160deg, ${KT_WHITE} 0%, ${KT_SOFT} 60%, #e8f0fb 100%)`,
           backgroundAttachment: 'fixed',
           minHeight: '100vh',
           margin: 0,
@@ -57,9 +85,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+          border: `1px solid ${KT_LINE}`,
+          boxShadow: `0 8px 18px rgba(7, 22, 47, 0.06)`,
           borderRadius: 16,
         },
       },
@@ -67,12 +94,19 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
+          borderRadius: 8,
           padding: '10px 20px',
+          boxShadow: 'none',
           transition: 'all 0.2s ease-in-out',
           '&:hover': {
             transform: 'translateY(-1px)',
-            boxShadow: '0 4px 12px rgba(168, 85, 247, 0.2)',
+            boxShadow: `0 4px 12px rgba(11, 74, 134, 0.18)`,
+          },
+        },
+        containedPrimary: {
+          background: `linear-gradient(135deg, ${KT_BLUE} 0%, ${KT_BLUE_STRONG} 100%)`,
+          '&:hover': {
+            background: `linear-gradient(135deg, #0d5498 0%, ${KT_BLUE} 100%)`,
           },
         },
       },
@@ -80,17 +114,40 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
+          borderRadius: 8,
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: KT_LINE,
+          },
           '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'rgba(168, 85, 247, 0.4)',
+            borderColor: `rgba(11, 74, 134, 0.4)`,
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#a855f7',
+            borderColor: KT_BLUE,
           },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 6,
+          fontFamily: '"Poppins", sans-serif',
+          fontWeight: 500,
+        },
+      },
+    },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: {
+          backgroundColor: `rgba(11, 74, 134, 0.08)`,
+          borderRadius: 4,
         },
       },
     },
   },
 });
+
+// Unused variables silenced
+void KT_BLUE_DEEP;
 
 export default theme;

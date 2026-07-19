@@ -109,7 +109,7 @@ export default function StandaloneAnalyzer() {
                 height: 6,
                 borderRadius: 3,
                 mb: 3,
-                bgcolor: 'rgba(255,255,255,0.05)',
+                bgcolor: 'rgba(11, 74, 134, 0.08)',
                 '& .MuiLinearProgress-bar': {
                   bgcolor: color,
                   borderRadius: 3
@@ -119,7 +119,7 @@ export default function StandaloneAnalyzer() {
 
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <Paper sx={{ p: 2, bgcolor: 'rgba(255,255,255,0.02)' }}>
+                <Paper sx={{ p: 2, bgcolor: '#f6f9fd', border: '1px solid #d6dce5' }}>
                   <Typography variant="caption" color="text.secondary" display="block">
                     Online Guessing Attack (100 guesses/sec)
                   </Typography>
@@ -129,7 +129,7 @@ export default function StandaloneAnalyzer() {
                 </Paper>
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <Paper sx={{ p: 2, bgcolor: 'rgba(255,255,255,0.02)' }}>
+                <Paper sx={{ p: 2, bgcolor: '#f6f9fd', border: '1px solid #d6dce5' }}>
                   <Typography variant="caption" color="text.secondary" display="block">
                     Offline Brute-Force (GPU Farm)
                   </Typography>

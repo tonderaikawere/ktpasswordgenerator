@@ -82,7 +82,7 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
 
         <Box sx={{ flexGrow: 1, overflowY: 'auto', maxHeight: '420px', pr: 0.5 }}>
           {filtered.length === 0 ? (
-            <Paper sx={{ p: 4, textAlign: 'center', bgcolor: 'rgba(255,255,255,0.01)', borderStyle: 'dashed' }}>
+            <Paper sx={{ p: 4, textAlign: 'center', bgcolor: '#f6f9fd', borderStyle: 'dashed', borderColor: '#d6dce5' }}>
               <Typography variant="body2" color="text.secondary">
                 {saved.length === 0 ? 'No saved passwords yet. Generate one and save it!' : 'No match found for search query.'}
               </Typography>
@@ -91,7 +91,7 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
             <List sx={{ p: 0 }}>
               {filtered.map((item, idx) => (
                 <Fragment key={item.id}>
-                  {idx > 0 && <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.05)' }} />}
+                  {idx > 0 && <Divider sx={{ borderColor: 'rgba(7, 22, 47, 0.06)' }} />}
                   <ListItem sx={{ py: 1.5, px: 1 }}>
                     <ListItemText
                       primary={item.label}
