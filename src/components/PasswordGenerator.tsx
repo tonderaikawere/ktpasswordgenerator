@@ -79,6 +79,11 @@ export default function PasswordGenerator({ options, setOptions, password, gener
             }
           />
 
+          {strengthInfo.entropy === 0 && (
+            <Alert severity="error" sx={{ mb: 2 }}>
+              Please select at least one character set checkbox below to generate a valid password!
+            </Alert>
+          )}
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
             <Typography variant="body2" color="text.secondary">
               Entropy: <strong>{strengthInfo.entropy.toFixed(1)} bits</strong>
