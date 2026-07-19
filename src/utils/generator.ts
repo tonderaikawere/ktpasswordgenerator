@@ -22,41 +22,43 @@ function generateSpeakable(length: number): string {
 }
 
 export function generatePassword(options: GenOptions): string {
+  let basePwd = '';
   if (options.easyToSpeak) {
-    return generateSpeakable(options.length);
-  }
+    basePwd = generateSpeakable(options.length);
+  } else {
+    let charPool = '';
+    if (options.lowercase) charPool += lowercaseSet;
+    if (options.uppercase) charPool += uppercaseSet;
+    if (options.numbers) charPool += numberSet;
+    if (options.symbols) charPool += symbolSet;
+    
+    if (options.excludeAmbiguous) {
+      const ambiguous = /[{}[\]()\/\\'"`~,;:.<>]/g;
+      charPool = charPool.replace(ambiguous, '');
+    }
+    
+    if (options.easyToRead) {
+      const similar = /[l1Io0O5S2Z]/g;
+      charPool = charPool.replace(similar, '');
+    }
 
-  let charPool = '';
-  if (options.lowercase) charPool += lowercaseSet;
-  if (options.uppercase) charPool += uppercaseSet;
-  if (options.numbers) charPool += numberSet;
-  if (options.symbols) charPool += symbolSet;
-  
-  if (options.excludeAmbiguous) {
-    const ambiguous = /[{}[\]()\/\\'"`~,;:.<>]/g;
-    charPool = charPool.replace(ambiguous, '');
-  }
-  
-  if (options.easyToRead) {
-    const similar = /[l1Io0O5S2Z]/g;
-    charPool = charPool.replace(similar, '');
-  }
-
-  if (options.excludeChars) {
-    for (const char of options.excludeChars) {
-      charPool = charPool.split(char).join('');
+    if (options.excludeChars) {
+      for (const char of options.excludeChars) {
+        charPool = charPool.split(char).join('');
+      }
+    }
+    
+    if (charPool === '') return '';
+    
+    const array = new Uint32Array(options.length);
+    window.crypto.getRandomValues(array);
+    
+    for (let i = 0; i < options.length; i++) {
+      basePwd += charPool[array[i] % charPool.length];
     }
   }
-  
-  if (charPool === '') return '';
-  
-  const array = new Uint32Array(options.length);
-  window.crypto.getRandomValues(array);
-  
-  let password = '';
-  for (let i = 0; i < options.length; i++) {
-    password += charPool[array[i] % charPool.length];
-  }
-  
-  return password;
+
+  const prefix = options.prefix || '';
+  const suffix = options.suffix || '';
+  return prefix + basePwd + suffix;
 }
