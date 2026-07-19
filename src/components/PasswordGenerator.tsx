@@ -35,7 +35,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
     });
   };
 
-  const handleTextChange = (field: 'excludeChars') => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTextChange = (field: 'excludeChars' | 'prefix' | 'suffix') => (event: React.ChangeEvent<HTMLInputElement>) => {
     setOptions(prev => ({ ...prev, [field]: event.target.value }));
   };
 
@@ -210,6 +210,30 @@ export default function PasswordGenerator({ options, setOptions, password, gener
                   sx={{ width: '100%', alignItems: 'flex-start', m: 0, mb: 2 }}
                 />
               </Grid>
+              
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Password Prefix"
+                  variant="outlined"
+                  size="small"
+                  placeholder="e.g. static_pre-"
+                  value={options.prefix}
+                  onChange={handleTextChange('prefix')}
+                />
+              </Grid>
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Password Suffix"
+                  variant="outlined"
+                  size="small"
+                  placeholder="e.g. -static_post"
+                  value={options.suffix}
+                  onChange={handleTextChange('suffix')}
+                />
+              </Grid>
+              
               <Grid size={12}>
                 <TextField
                   fullWidth
