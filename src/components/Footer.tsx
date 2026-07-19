@@ -10,9 +10,26 @@ export default function Footer() {
           Kawerify Tech
         </Link>. Managed by Kawerify Tech as a public utility tool to be used by anyone free of charge.
       </Typography>
-      <Typography variant="caption" color="text.disabled" display="block" sx={{ maxWidth: 650, mx: 'auto', lineHeight: 1.5 }}>
+      <Typography variant="caption" color="text.disabled" display="block" sx={{ maxWidth: 650, mx: 'auto', lineHeight: 1.5, mb: 2 }}>
         Disclaimer: This tool generates passwords client-side in your browser. Saved passwords are stored locally in your own browser's cache (LocalStorage) and are never transmitted to any server. Kawerify Tech does not have access to your saved passwords. Please ensure you keep a backup copy.
       </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+        <Link href="https://github.com/tonderaikawere/ktpasswordgenerator/blob/main/docs/LICENSE.md" target="_blank" rel="noopener" color="text.secondary" variant="caption" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main', textDecoration: 'underline' } }}>
+          License
+        </Link>
+        <Link href="https://github.com/tonderaikawere/ktpasswordgenerator/blob/main/docs/PRIVACY.md" target="_blank" rel="noopener" color="text.secondary" variant="caption" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main', textDecoration: 'underline' } }}>
+          Privacy Policy
+        </Link>
+        <Link href="https://github.com/tonderaikawere/ktpasswordgenerator/blob/main/docs/TERMS.md" target="_blank" rel="noopener" color="text.secondary" variant="caption" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main', textDecoration: 'underline' } }}>
+          Terms of Service
+        </Link>
+        <Link href="https://github.com/tonderaikawere/ktpasswordgenerator/blob/main/docs/DISCLAIMER.md" target="_blank" rel="noopener" color="text.secondary" variant="caption" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main', textDecoration: 'underline' } }}>
+          Disclaimer
+        </Link>
+        <Link href="https://github.com/tonderaikawere/ktpasswordgenerator/blob/main/docs/SECURITY.md" target="_blank" rel="noopener" color="text.secondary" variant="caption" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main', textDecoration: 'underline' } }}>
+          Security Policy
+        </Link>
+      </Box>
     </Box>
   );
 }
