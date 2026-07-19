@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Grid2 as Grid, Typography, Card, CardContent } from '@mui/material';
 import CalculateIcon from '@mui/icons-material/Calculate';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
 export default function EducationalHub() {
   return (
@@ -28,6 +29,28 @@ export default function EducationalHub() {
               <Typography variant="body2" color="text.secondary">
                 The higher the entropy, the more combinations an attacker has to guess. To secure yourself against brute-force attacks, aim for at least <strong>60 bits</strong> for regular accounts, and <strong>80+ bits</strong> for critical logins. Increasing length is far more effective than adding complex symbols!
               </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardContent>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
+                <WarningAmberIcon color="warning" sx={{ mr: 1 }} />
+                <Typography variant="h6" sx={{ fontFamily: 'Outfit', fontWeight: 600 }}>
+                  Common Password Mistakes
+                </Typography>
+              </Box>
+              <Typography variant="body2" color="text.secondary" paragraph>
+                Many credentials fail not because they lack complexity, but because they are predictable. Avoid:
+              </Typography>
+              <ul style={{ paddingLeft: 20, margin: 0, fontSize: '0.875rem', color: '#94a3b8' }}>
+                <li><strong>Reusing Passwords:</strong> If one site gets breached, attackers try that password on all your accounts.</li>
+                <li><strong>Dictionary Words & Names:</strong> Hackers use dictionary lists (wordlists) to guess millions of combinations instantly.</li>
+                <li><strong>Common Subsitutions:</strong> Changing "Password" to "P@$$w0rd" is heavily anticipated by modern cracking programs.</li>
+                <li><strong>Personal Info:</strong> Birthdays, pet names, and phone numbers are easily scrapeable on social media.</li>
+              </ul>
             </CardContent>
           </Card>
         </Grid>
