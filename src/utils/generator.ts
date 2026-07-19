@@ -62,3 +62,33 @@ export function generatePassword(options: GenOptions): string {
   const suffix = options.suffix || '';
   return prefix + basePwd + suffix;
 }
+
+export function getPoolSize(options: GenOptions): number {
+  if (options.easyToSpeak) return 24;
+  
+  let pool = '';
+  if (options.lowercase) pool += lowercaseSet;
+  if (options.uppercase) pool += uppercaseSet;
+  if (options.numbers) pool += numberSet;
+  if (options.symbols) pool += symbolSet;
+  
+  if (options.excludeAmbiguous) {
+    const ambiguous = /[{}[\]()\/\\'"`~,;:.<>]/g;
+    pool = pool.replace(ambiguous, '');
+  }
+  if (options.easyToRead) {
+    const similar = /[l1Io0O5S2Z]/g;
+    pool = pool.replace(similar, '');
+  }
+  if (options.excludeChars) {
+    for (const char of options.excludeChars) {
+      pool = pool.split(char).join('');
+    }
+  }
+  return pool.length;
+}
+
+export function calculateEntropy(pwdLength: number, poolSize: number): number {
+  if (pwdLength <= 0 || poolSize <= 1) return 0;
+  return pwdLength * Math.log2(poolSize);
+}
