@@ -1,20 +1,35 @@
-# Security Policy & Architecture
+# Security Policy
 
-This document describes the security model of the Kawerify Tech Passwords utility.
+This document details the security practices, vulnerability reporting procedures, and browser safety guidelines for the Kawerify Tech Passwords utility.
 
-## Cryptographically Secure Random Number Generation
+---
 
-This utility uses the Web Cryptography API (`window.crypto.getRandomValues`) to generate random passwords. Unlike standard pseudo-random number generators (such as `Math.random()`), the Web Crypto API utilizes the underlying operating system's entropy source, providing high-entropy, cryptographically strong random values suitable for security-sensitive applications.
+## 1. Supported Versions
 
-## Zero-Server storage (Client-Side Only)
+We only provide security patches for the latest released version of this application.
 
-No data generated or typed on this website is ever transmitted to a remote server.
-- Passwords are generated entirely within your local browser sandbox.
-- When you click "Save Password", it is stored in your browser's local storage database (`LocalStorage`).
-- The source code is compiled to static HTML, CSS, and JS. There is no backend server or database that can be hacked, compromised, or monitored.
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.x     | :white_check_mark: |
+| < 1.0   | :x:                |
 
-## Local Storage Considerations
+## 2. Reporting a Vulnerability
 
-Since saved passwords are stored in your browser's `LocalStorage`:
-- Clearing your browser cache or site data will delete your saved passwords.
-- Anyone with physical access to your device (and browser profile) could potentially view your saved passwords. Use the **eye toggle** to hide credentials in the drawer, but always log out of public computers and secure your personal devices with a lock screen.
+If you discover a security vulnerability in this utility, please do not open a public GitHub issue. Instead, report it privately to the Kawerify Tech team to ensure responsible disclosure.
+
+- **Vulnerability Reporting Email**: security@kawerifytech.com
+- **Response SLA**: The security team aims to review and reply to all vulnerability disclosures within **48 hours**, providing a plan for resolving the issue if verified.
+- **Coordinated Disclosure**: We ask that you do not publish details of the vulnerability until we have patched the issue and updated the repository.
+
+## 3. Cryptographic Implementation Details
+
+- **PRNG**: The random values are fetched using the browser's hardware-backed cryptographic seed (`window.crypto.getRandomValues`).
+- **Data Isolation**: This application does not contain code that reads or transmits inputs/outputs to external servers. It has zero backend code.
+- **Content Security Policy (CSP)**: We recommend deploying this application with strict CSP headers that block connections to untrusted domains, preventing third-party script injections.
+
+## 4. Local Cache Security Recommendations
+
+Since passwords saved in this app reside in your browser's local cache (`LocalStorage`):
+- Avoid saving passwords when using shared, public, or school computers.
+- Regularly audit and delete saved passwords when they are no longer needed.
+- Protect your personal computer and mobile device profiles with high-entropy unlock codes to prevent local cache extraction.
