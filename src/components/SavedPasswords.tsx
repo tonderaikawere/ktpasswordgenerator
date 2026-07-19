@@ -4,6 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { SavedPassword } from '../types';
 
 interface Props {
@@ -15,6 +17,11 @@ interface Props {
 
 export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClipboard }: Props) {
   const [search, setSearch] = useState('');
+  const [visibleIds, setVisibleIds] = useState<Record<string, boolean>>({});
+
+  const toggleVisibility = (id: string) => {
+    setVisibleIds(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const filtered = saved.filter(item =>
     item.label.toLowerCase().includes(search.toLowerCase()) ||
@@ -69,7 +76,7 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
             <List sx={{ p: 0 }}>
               {filtered.map((item, idx) => (
                 <React.Fragment key={item.id}>
-                  {idx > 0 && <Divider sx={{ borderColor: 'rgba(255,255,255,0.05)' }} />}
+                  {idx > 0 && <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.05)' }} />}
                   <ListItem sx={{ py: 1.5, px: 1 }}>
                     <ListItemText
                       primary={item.label}
@@ -87,7 +94,7 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
                               wordBreak: 'break-all'
                             }}
                           >
-                            {item.password}
+                            {visibleIds[item.id] ? item.password : '••••••••••••••••'}
                           </Typography>
                           <Typography component="span" variant="caption" color="text.disabled" display="block">
                             {item.options} • {new Date(item.timestamp).toLocaleDateString()}
@@ -96,6 +103,9 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
                       }
                     />
                     <ListItemSecondaryAction>
+                      <IconButton onClick={() => toggleVisibility(item.id)} color="inherit" size="small" sx={{ mr: 0.5 }}>
+                        {visibleIds[item.id] ? <VisibilityOffIcon fontSize="small" /> : <VisibilityIcon fontSize="small" />}
+                      </IconButton>
                       <IconButton onClick={() => copyToClipboard(item.password)} color="secondary" size="small" sx={{ mr: 0.5 }}>
                         <ContentCopyIcon fontSize="small" />
                       </IconButton>
