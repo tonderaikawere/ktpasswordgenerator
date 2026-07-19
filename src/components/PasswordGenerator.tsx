@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid, FormControlLabel, Switch, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid, FormControlLabel, Switch, Accordion, AccordionSummary, AccordionDetails, TextField } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -33,6 +33,10 @@ export default function PasswordGenerator({ options, setOptions, password, gener
       }
       return next;
     });
+  };
+
+  const handleTextChange = (field: 'excludeChars') => (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOptions(prev => ({ ...prev, [field]: event.target.value }));
   };
 
   return (
@@ -179,7 +183,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
                       <Typography variant="caption" color="text.secondary">Avoids brackets, braces, commas, slashes: {"{ } [ ] ( ) / \\ ' \" ` ~ , ; : . < >"}</Typography>
                     </Box>
                   }
-                  sx={{ width: '100%', alignItems: 'flex-start', m: 0, mb: 1.5 }}
+                  sx={{ width: '100%', alignItems: 'flex-start', m: 0, mb: 2 }}
                 />
               </Grid>
               <Grid size={12}>
@@ -191,7 +195,7 @@ export default function PasswordGenerator({ options, setOptions, password, gener
                       <Typography variant="caption" color="text.secondary">Avoids confusing symbols like l, 1, I, o, 0, O, 2, Z, 5, S</Typography>
                     </Box>
                   }
-                  sx={{ width: '100%', alignItems: 'flex-start', m: 0, mb: 1.5 }}
+                  sx={{ width: '100%', alignItems: 'flex-start', m: 0, mb: 2 }}
                 />
               </Grid>
               <Grid size={12}>
@@ -203,7 +207,19 @@ export default function PasswordGenerator({ options, setOptions, password, gener
                       <Typography variant="caption" color="text.secondary">Generates speakable phonetic syllables instead of random character streams</Typography>
                     </Box>
                   }
-                  sx={{ width: '100%', alignItems: 'flex-start', m: 0 }}
+                  sx={{ width: '100%', alignItems: 'flex-start', m: 0, mb: 2 }}
+                />
+              </Grid>
+              <Grid size={12}>
+                <TextField
+                  fullWidth
+                  label="Custom Characters to Exclude"
+                  variant="outlined"
+                  size="small"
+                  placeholder="e.g. abcXYZ123"
+                  value={options.excludeChars}
+                  onChange={handleTextChange('excludeChars')}
+                  sx={{ mt: 1 }}
                 />
               </Grid>
             </Grid>
